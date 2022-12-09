@@ -548,7 +548,7 @@ public class MatriculaVIEW extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jtl_consultar_cursoMouseClicked
 
     private void btnPrintActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPrintActionPerformed
-        MessageFormat cabecalho = new MessageFormat("Relação de matrículas ativas");
+        MessageFormat cabecalho = new MessageFormat("Relatório - matrículas ativas");
         MessageFormat rodape = new MessageFormat("Matheus Sass / LP2S4 2022");
 
         try{
@@ -556,10 +556,10 @@ public class MatriculaVIEW extends javax.swing.JInternalFrame {
             PrintRequestAttributeSet set = new HashPrintRequestAttributeSet();
             set.add(OrientationRequested.PORTRAIT);
             jtl_consultar_matricula.print(JTable.PrintMode.FIT_WIDTH, cabecalho, rodape, true, set, true);
-            JOptionPane.showMessageDialog(null, "Operação finalizada.");
+            JOptionPane.showMessageDialog(null, "Operação realizada com sucesso!");
         }
         catch (java.awt.print.PrinterException erro) {
-            JOptionPane.showMessageDialog(null, "ERRO! \n" + erro);
+            JOptionPane.showMessageDialog(null, "ERRO!\n" + erro);
         }
     }//GEN-LAST:event_btnPrintActionPerformed
 

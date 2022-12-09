@@ -1,0 +1,78 @@
+--Cria a tabela para receber dados de Alunos
+CREATE TABLE ALUNO(
+	idAluno SERIAL,
+	nomeAluno VARCHAR(50),
+	cpf VARCHAR(14) UNIQUE,
+	email VARCHAR(50),
+	telefone VARCHAR(30),
+	estado VARCHAR(10),
+	cidade VARCHAR(30),
+	CONSTRAINT PK_ALUNO PRIMARY KEY (idAluno)
+);
+
+
+--Cria a tabela para receber dados de Cursos
+CREATE TABLE CURSO(
+	idCurso SERIAL,
+	nomeCurso VARCHAR(50),
+	sigla VARCHAR(10) UNIQUE,
+	descricao VARCHAR(300),
+	CONSTRAINT PK_CURSO PRIMARY KEY (idCurso)
+);
+
+
+--Cria a tabela para receber Matrículas
+CREATE TABLE MATRICULA(
+	idMatricula SERIAL,
+	idCurso INTEGER,
+	idAluno INTEGER,
+	nomeAluno VARCHAR(50),
+	nomeCurso VARCHAR(50),
+	FOREIGN KEY (idAluno) REFERENCES ALUNO(idAluno),
+	FOREIGN KEY (idCurso) REFERENCES CURSO(idCurso),
+	CONSTRAINT CHAVE UNIQUE(idCurso, idAluno)
+);
+
+
+--Cria tabela para dados dos Administradores do sistema
+CREATE TABLE ADM(
+	idAdmin SERIAL,
+	login VARCHAR(64),
+	senha VARCHAR(64),
+	CONSTRAINT PK_ADM PRIMARY KEY (idAdmin)
+);
+
+--TESTES
+--Insere dados de alunos na tabela Aluno
+INSERT INTO ALUNO VALUES	(11, 'Ana Antunes', '111.111.111-11', 'ana@email.com', '(17)99999-9991', 'SP', 'Votuporanga'),
+							(12, 'Bruno Bueno', '222.222.222-22', 'bruno@email.com', '(17)99999-9992', 'SP', 'São José do Rio Preto'),
+							(13, 'Carla Cortez', '333.333.333-33', 'carla@email.com', '(17)99999-9993', 'SP', 'Bálsamo'),
+							(14, 'Daniel Duarte', '444.444.444-44', 'daniel@email.com', '(17)99999-9994', 'SP', 'Mirassol'),
+							(15, 'Estela Esteves', '555.555.555-55', 'eduarda@email.com', '(17)99999-9995', 'SP', 'Votuporanga'),
+							(16, 'Felipe Fernandes', '666.666.666-66', 'felipe@email.com', '(17)99999-9996', 'SP', 'São José do Rio Preto');
+
+
+--Insere dados de cursos na tabela Curso							
+INSERT INTO CURSO VALUES	(11, 'Matemática 1', 'MAT1', 'Aritmética I, Geometria Plana I, Aritmética II, Álgebra I, Razão e Proporção, Geometria Plana II, Álgebra II'),
+							(12, 'Matemática 2', 'MAT2', 'Conjuntos, Funções I, Sequências e Progressões, Funções II, Matemática Financeira, Trigonometria'),
+							(13, 'Matemática 3', 'MAT3', 'Geometria Plana III, Geometria Especial, Geometria Analítica, Análise Combinatória, Probabilidade, Estatística, Matrizes, Sistemas Lineares, Números Complexos, Funções III'),
+							(14, 'Física 1', 'FIS1', 'Mecânica Cinemática, Mecânica Dinâmica, Mecânica Estática, Gravitação, Trabalho, Colisões, Hidrostática'),
+							(15, 'Física 2', 'FIS2', 'Eletrostática, Eletrodinâmica, Eletromagnetismo, Calorimetria, Gases, Ondulatória, Ótica, Física Moderna');
+
+
+--Insere dados na tabela Matricula							
+INSERT INTO MATRICULA VALUES	(11, 11, 16, 'Felipe Fernandes', 'Matemática 1'),
+								(12, 15, 12, 'Bruno Bueno', 'Física 2'),
+								(13, 13, 11, 'Ana Antunes', 'Matemática 3'),
+								(14, 15, 11, 'Ana Antunes', 'Física 2'),
+								(15, 14, 13, 'Carla Cortez', 'Física 1'),
+								(16, 14, 15, 'Estela Esteves', 'Física 1'),
+								(17, 12, 15, 'Estela Esteves', 'Matemática 2'),
+								(18, 12, 14, 'Daniel Duarte', 'Matemática 2'),
+								(19, 13, 12, 'Bruno Bueno', 'Matemática 3');
+
+
+--Insere dados do administrador na tabela ADM
+INSERT INTO ADM VALUES	(10, 'admin', '9B7C240AC851C0BAD37B0F93713A05FE959F75AF5D81B6F80A5F70D0E9C4326E');
+--Para testes, 'adminsenha', hash:
+--9B7C240AC851C0BAD37B0F93713A05FE959F75AF5D81B6F80A5F70D0E9C4326E		

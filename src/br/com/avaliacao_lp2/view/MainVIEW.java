@@ -1,5 +1,6 @@
 package br.com.avaliacao_lp2.view;
 
+import br.com.avaliacao_lp2.ctr.BackupCTR;
 import br.com.avaliacao_lp2.dto.AdminDTO;
 import javax.swing.JOptionPane;
 import java.awt.Image;
@@ -53,6 +54,24 @@ public class MainVIEW extends javax.swing.JFrame {
         matriculaVIEW.setPosicao();
     }
     
+    private void realizarBackup(){
+        BackupCTR backupCTR = new BackupCTR();
+        try {
+            backupCTR.confirmaBackup();
+	} catch (Exception e) {
+            System.out.println(e.getMessage());
+	}
+    }
+    
+    private void restaurarBackup(){
+        BackupCTR backupCTR = new BackupCTR();
+        try {
+            backupCTR.confirmaRestaurarBackup();
+	} catch (Exception e) {
+            System.out.println(e.getMessage());
+	}
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -70,6 +89,9 @@ public class MainVIEW extends javax.swing.JFrame {
         itemMenuCurso = new javax.swing.JMenuItem();
         menuGerenciar = new javax.swing.JMenu();
         itemMenuMatricula = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        menuItemRealizarBackup = new javax.swing.JMenuItem();
+        menuItemRestaurarBackup = new javax.swing.JMenuItem();
         menuSobre = new javax.swing.JMenu();
         menuSair = new javax.swing.JMenu();
 
@@ -112,6 +134,26 @@ public class MainVIEW extends javax.swing.JFrame {
 
         menuBar.add(menuGerenciar);
 
+        jMenu1.setText("Backup");
+
+        menuItemRealizarBackup.setText("Gerar");
+        menuItemRealizarBackup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemRealizarBackupActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuItemRealizarBackup);
+
+        menuItemRestaurarBackup.setText("Restaurar");
+        menuItemRestaurarBackup.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                menuItemRestaurarBackupActionPerformed(evt);
+            }
+        });
+        jMenu1.add(menuItemRestaurarBackup);
+
+        menuBar.add(jMenu1);
+
         menuSobre.setText("Sobre");
         menuSobre.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -139,7 +181,7 @@ public class MainVIEW extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 676, Short.MAX_VALUE)
+            .addComponent(desktopPane, javax.swing.GroupLayout.DEFAULT_SIZE, 678, Short.MAX_VALUE)
         );
 
         pack();
@@ -169,14 +211,25 @@ public class MainVIEW extends javax.swing.JFrame {
                 + "\n                         IFSP / 2022");
     }//GEN-LAST:event_menuSobreMouseClicked
 
+    private void menuItemRealizarBackupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRealizarBackupActionPerformed
+        realizarBackup();
+    }//GEN-LAST:event_menuItemRealizarBackupActionPerformed
+
+    private void menuItemRestaurarBackupActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_menuItemRestaurarBackupActionPerformed
+        restaurarBackup();
+    }//GEN-LAST:event_menuItemRestaurarBackupActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuItem itemMenuAluno;
     private javax.swing.JMenuItem itemMenuCurso;
     private javax.swing.JMenuItem itemMenuMatricula;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar menuBar;
     private javax.swing.JMenu menuCadastrar;
     private javax.swing.JMenu menuGerenciar;
+    private javax.swing.JMenuItem menuItemRealizarBackup;
+    private javax.swing.JMenuItem menuItemRestaurarBackup;
     private javax.swing.JMenu menuSair;
     private javax.swing.JMenu menuSobre;
     // End of variables declaration//GEN-END:variables

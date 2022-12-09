@@ -48,6 +48,29 @@
             </MenuItem>
           </SubComponents>
         </Menu>
+        <Menu class="javax.swing.JMenu" name="jMenu1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Backup"/>
+          </Properties>
+          <SubComponents>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemRealizarBackup">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Gerar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemRealizarBackupActionPerformed"/>
+              </Events>
+            </MenuItem>
+            <MenuItem class="javax.swing.JMenuItem" name="menuItemRestaurarBackup">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Restaurar"/>
+              </Properties>
+              <Events>
+                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="menuItemRestaurarBackupActionPerformed"/>
+              </Events>
+            </MenuItem>
+          </SubComponents>
+        </Menu>
         <Menu class="javax.swing.JMenu" name="menuSobre">
           <Properties>
             <Property name="text" type="java.lang.String" value="Sobre"/>
@@ -96,7 +119,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="desktopPane" alignment="0" pref="676" max="32767" attributes="0"/>
+          <Component id="desktopPane" alignment="0" pref="678" max="32767" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>

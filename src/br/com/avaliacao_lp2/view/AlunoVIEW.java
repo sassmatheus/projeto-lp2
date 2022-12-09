@@ -105,7 +105,7 @@ public class AlunoVIEW extends javax.swing.JInternalFrame {
             }
         }
         catch(Exception erTab){
-            System.out.println("Erro SQL."+erTab);
+            System.out.println("Erro SQL." + erTab);
         }
         finally{
             alunoCTR.CloseDB();

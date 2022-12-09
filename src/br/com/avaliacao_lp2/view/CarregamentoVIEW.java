@@ -33,12 +33,12 @@ public class CarregamentoVIEW extends JWindow{
 
     public CarregamentoVIEW() throws InterruptedException{
         //Get screen width
-        int w = this.getToolkit().getDefaultToolkit().getScreenSize().width;
+        int largura = this.getToolkit().getDefaultToolkit().getScreenSize().width;
         //Get screen height
-        int h = this.getToolkit().getDefaultToolkit().getScreenSize().height;
+        int altura = this.getToolkit().getDefaultToolkit().getScreenSize().height;
         
-        int x = (w-521) / 2;
-        int y = (h-335) / 2;
+        int x = (largura-521) / 2;
+        int y = (altura-335) / 2;
         
         JLabel labelimg = new JLabel(new ImageIcon(getClass().getResource("images/logo.gif")));    
         labelimg.setLocation(new Point(0,0));
@@ -47,7 +47,7 @@ public class CarregamentoVIEW extends JWindow{
         
         this.setLayout(null);
         this.add(labelimg);
-        this.setLocation(new Point(x,y));
+        this.setLocation(new Point(x, y));
         this.setSize(521,370);
         this.setVisible(true);
 
